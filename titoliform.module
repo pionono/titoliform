@@ -1,30 +1,21 @@
 <?php  
 
-function titoliform_form_alter(&$form, $form_state, $form_id) {
-	
-	//echo "$form[name][0]<br>";	
-	//print_r($form);
-	//echo "Titolo inizio: $titolo<p>";
+function titoliform_form_alter(&$form, $form_state, $form_id) {	
 
-	if ($form_id == 'user_register') {
-		//echo "1<br>";
-		$titolo = "Registrazione profilo";
-		drupal_set_title(t($titolo));		
+	// Pagina modifica profilo
+	if ($form_id == 'profile_node_form') {		
+		drupal_set_title(t('Modifica profilo'));			
+		
+		// Pagina creazione profilo
+		if ( $form['field_nome'][0]['#default_value']['value'] == '') {
+			drupal_set_title(t('Registrazione utente'));		
+		}		
 	}
-
-	//echo "Titolo: $titolo<p>";*/
-
-	/*if ($form_id == 'profile_node_form') {
-		//echo "2<br>";
-		drupal_set_title(t('Modifica profilo')); 					
-	}*/
-
+	
+	// Pagina recupero password
 	if ($form_id == 'user_pass') {
 		drupal_set_title(t('Recupero credenziali'));
 	}
 	
 }
 
-function titoliform_validate($form, &$form_state) {
-
-}
