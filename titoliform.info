@@ -1,0 +1,6 @@
+; $Id$
+name = Cambio dei titoli
+description = Modifica form campi regione provincia comune
+dependencies[] = content
+package = CCK
+core = 6.x

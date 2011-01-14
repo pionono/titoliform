@@ -1,0 +1,40 @@
+<?php
+// $Id$
+// Notify CCK when this module is enabled, disabled, installed, and uninstalled
+// so CCK can do any necessary preparation or cleanup.
+/**
+ * @file
+ * Implementation of hook_install().
+ */
+function titoloform_install() {
+  drupal_load('module', 'content');
+  content_notify('install', 'titoloform');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function titoloform_uninstall() {
+  drupal_load('module', 'content');
+  content_notify('uninstall', 'titoloform');
+}
+
+/**
+ * Implementation of hook_enable().
+ *
+ * Notify content module when this module is enabled.
+ */
+function titoloform_enable() {
+  drupal_load('module', 'content');
+  content_notify('enable', 'titoloform');
+}
+
+/**
+ * Implementation of hook_disable().
+ *
+ * Notify content module when this module is disabled.
+ */
+function titoloform_disable() {
+  drupal_load('module', 'content');
+  content_notify('disable', 'titoloform');
+}
