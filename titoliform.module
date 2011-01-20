@@ -1,14 +1,18 @@
 <?php  
 
 function titoliform_form_alter(&$form, $form_state, $form_id) {	
+	//echo $form_id;
 
 	// Pagina modifica profilo
 	if ($form_id == 'profile_node_form') {		
-		drupal_set_title(t('Modifica profilo'));			
+		drupal_set_title(t('Modifica profilo'));
+		$form['#attributes'] = array('class' => 'mandataria');
+		//unset ($form['preview']);			
 		
 		// Pagina creazione profilo
 		if ( $form['field_nome'][0]['#default_value']['value'] == '') {
-			drupal_set_title(t('Registrazione'));		
+			drupal_set_title(t('Registrazione'));	
+			$form['#attributes'] = array('class' => 'mandataria');	
 		}		
 	}
 	
@@ -16,6 +20,66 @@ function titoliform_form_alter(&$form, $form_state, $form_id) {
 	if ($form_id == 'user_pass') {
 		drupal_set_title(t('Recupero credenziali'));
 	}
-	
+
+	if ($form_id == 'page_node_form') {
+		
+		//$nid=$form['nid']["#value"]; 
+		//echo $nid;
+		//$node = node_load($nid);
+		//$provincia = $node->field_province1[0]['value'];
+		
+		//$form['#after_build'][] = '_mysnippet_after_build';
+	}
+
 }
+
+/*function _mysnippet_after_build($form, &$form_state) {
+  // Use this one if the field is placed on top of the form.
+  _mysnippet_fix_addendo($form['field_campo1']);
+  _mysnippet_fix_addendo($form['field_campo2']);
+ // _mysnippet_fix_somma($form['field_campo3']);
+
+
+  // Use this one if the field is placed inside a fieldgroup.
+//  _mysnippet_fix_disabled($form['group_mygroup']['field_myfield']);
+  return $form;
+}*/
+
+/*function _mysnippet_fix_addendo(&$elements) {
+  foreach (element_children($elements) as $key) {
+    if (isset($elements[$key]) && $elements[$key]) {
+
+      // Recurse through all children elements.
+      _mysnippet_fix_addendo($elements[$key]);
+    }
+  }
+
+  if (!isset($elements['#attributes'])) {
+    $elements['#attributes'] = array();
+  }
+  $elements['#attributes'] = array (
+	'onFocus' => 'startCalc();',
+	'onBlur' => 'stopCalc();',
+  );
+}*/
+
+/*
+function _mysnippet_fix_somma(&$elements) {
+  foreach (element_children($elements) as $key) {
+    if (isset($elements[$key]) && $elements[$key]) {
+
+      // Recurse through all children elements.
+      _mysnippet_fix_somma($elements[$key]);
+    }
+  }
+
+  if (!isset($elements['#attributes'])) {
+    $elements['#attributes'] = array();
+  }
+  $elements['#attributes'] = array (
+	'onFocus' => 'startCalc();',
+	'onBlur' => 'stopCalc();',
+  );
+}*/
+
 
